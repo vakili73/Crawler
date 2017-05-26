@@ -7,5 +7,9 @@ class KhanehkheshtiSpider(scrapy.Spider):
     start_urls = ['http://khanehkheshti.com/']
 
     def parse(self, response):
-        categories = response.xpath("//*[@id='navigation']/ul/li/a/text()").extract()
+        categories = response.xpath("//*[@id='navigation']/ul/li/a").extract()
+        f=open('file.txt', 'w', encoding='utf-8')
+        for category in categories:
+            f.write(category + '\n')
+        f.close()
         pass
